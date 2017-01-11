@@ -9,9 +9,9 @@ namespace MvcApplication1.Controllers
     public class FibonacciController : ApiController
     {
         // GET api/fibonacci
-        public string WhatIsYourToken()
+        public string Get()
         {
-            return "824ba76e-7f33-4af3-ab67-06ba9679fb36";
+            return "Hello";
         }
 
         
