@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -16,7 +16,6 @@ namespace MvcApplication1.Controllers
 
         
         // GET api/fibonacci/5
-        [HttpGet]
         public long GetValueAtN(int n)
         {
             int iReturnValue = 0;
@@ -32,6 +31,17 @@ namespace MvcApplication1.Controllers
             }
             return iReturnValue;
         
+        }
+
+        // GET api/reversestring/5
+        public string GetStringReverse(string strInputString)
+        {
+            string strReverse = string.Empty;
+            for (int i = strInputString.ToCharArray().Length - 1; i >= 0; i--)
+            {
+                strReverse = strReverse + strInputString[i];
+            }
+            return strReverse;
         }
     }
 }
