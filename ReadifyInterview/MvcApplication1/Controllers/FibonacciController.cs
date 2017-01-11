@@ -32,16 +32,5 @@ namespace MvcApplication1.Controllers
             return iReturnValue;
         
         }
-
-        // GET api/reversestring/5
-        public string GetStringReverse(string strInputString)
-        {
-            string strReverse = string.Empty;
-            for (int i = strInputString.ToCharArray().Length - 1; i >= 0; i--)
-            {
-                strReverse = strReverse + strInputString[i];
-            }
-            return strReverse;
-        }
     }
 }
