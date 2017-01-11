@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,16 +7,16 @@ using System.Web.Http;
 
 namespace MvcApplication1.Controllers
 {
-   
     public class ReverseStringController : ApiController
     {
         // GET api/reversestring
-        public void Get()
+        public IEnumerable<string> Get()
         {
-            
+            return new string[] { "value1", "value2" };
         }
 
         // GET api/reversestring/5
+        [HttpGet]
         public string GetStringReverse(string strInputString)
         {
             string strReverse = string.Empty;
@@ -25,21 +25,6 @@ namespace MvcApplication1.Controllers
                 strReverse = strReverse + strInputString[i];
             }
             return strReverse;
-        }
-
-        // POST api/reversestring
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/reversestring/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/reversestring/5
-        public void Delete(int id)
-        {
         }
     }
 }
