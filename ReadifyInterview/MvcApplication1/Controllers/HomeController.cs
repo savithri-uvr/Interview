@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,11 +17,27 @@ namespace MvcApplication1.Controllers
         [HttpPost]
         public ActionResult Index(FormCollection collection)
         {
-            FibonacciController obj = new FibonacciController();
-            int inputValue = Convert.ToInt32(collection["nValue"]);
-            long a = obj.GetValueAtN(inputValue);
-            ViewBag.Value1 = a; 
+            try
+            {
+
+                ModelState.Clear();
+                FibonacciController obj = new FibonacciController();
+                int inputValue = Convert.ToInt32(collection["nValue"]);
+                long a = obj.GetValueAtN(inputValue);
+                if (a >= 0)
+                {
+                    ViewBag.Value1 = a;
+                }
+                else
+                {
+                    ViewBag.Value1 = "No Content";
+                }
+            }
+            catch(Exception ex)
+            {
+            }
             return View();
         }
     }
 }
+
