@@ -2,36 +2,18 @@
     <script src="~/Scripts/jquery-1.8.2.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            event.preventDefault();
+            $('#nValue').numeric();
             $('#btnSubmit').click(function () {
-                
-                var nValue = $('#nValue').val();
-                $.ajax({
-                    url: "/api/fibonacci/GetValueAtN",
-                    type: 'POST',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: 'json',
-                    data: JSON.stringify({
-                        txtValue: $("#nValue").val()
-                    }),
-                    async: false
-                });
+                $('#divResponseFib').visible();
             });
-        });
-        function fnGetFibonacciSeriesNumber() {
-            $.getJSON("api/fibonacci",
-                function (data) {
-                    $('#lblValue').text = data // Clear the table body.
 
-                   
-                    // Loop through the list of products.
-                    //$.each(data, function (key, val) {
-                    //    // Add a table row for the product.
-                    //    var row = '<td>' + val.Name + '</td><td>' + val.Price + '</td>';
-                    //    $('<tr/>', { text: row })  // Append the name.
-                    //        .appendTo($('#products'));
-                    //});
-                });
-        }
+            $('#nValue').onerror = function () {
+                alert("HI");
+                this.setCustomValidity("Please enter only integer values.");
+            };
+        });
+        
     </script>
     <section class="featured">
         <div class="content-wrapper">
@@ -50,16 +32,18 @@
                 <h4>Implementation Notes</h4>
                 Returns the nth number in the fibonacci sequence.
                   <br /><br />
-                Enter the index <input id="nValue" type="text" name="nValue" />
+                Enter the index <input id="nValue" autocomplete="off" type="text" name="nValue" title="Only Integers" required pattern="\d*" />
                 <br />
                 <input id="btnSubmit" type="submit" value="Try it" />
-              <p>
+              <div id="divResponseFib">
+                <p>
                   <h4>Response</h4>
                   <p>
-                      @ViewBag.Value1
+                      nth Number is : @ViewBag.Value1
                   </p>
                   <label id="lblValue"></label>
               </p>
+                  </div>
             </li>
 
             
