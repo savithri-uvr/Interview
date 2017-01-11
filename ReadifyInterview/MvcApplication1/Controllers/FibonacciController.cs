@@ -11,12 +11,13 @@ namespace MvcApplication1.Controllers
         // GET api/fibonacci
         public string Get()
         {
-            return "Hello";
+            return "824ba76e-7f33-4af3-ab67-06ba9679fb36";
         }
 
         
         // GET api/fibonacci/5
-        public long GetValueAtN(int n)
+        [HttpGet]
+        public long FetchFibonacci(int n)
         {
             int iReturnValue = 0;
             int i = 0;
@@ -32,5 +33,17 @@ namespace MvcApplication1.Controllers
             return iReturnValue;
         
         }
+
+        // GET api/reversestring/5
+        public string GetStringReverse(string strInputString)
+        {
+            string strReverse = string.Empty;
+            for (int i = strInputString.ToCharArray().Length - 1; i >= 0; i--)
+            {
+                strReverse = strReverse + strInputString[i];
+            }
+            return strReverse;
+        }
+
     }
 }
